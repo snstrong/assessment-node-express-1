@@ -46,7 +46,7 @@ async function getUsers() {
 }
 ```
 
-- An async function will always return a Promise, so it will not return the array `[elie, matt, joel]` as a regular function would, but will instead return a Promise. To use the resolved data in this array, one would either need to chain a `.then` onto `getUsers()` or to call `getUsers` within another async function and await it. Also, this code assumes that `elie`, `joel`, and `matt` will all be retrieved without issue, when in fact one or all of these Promises could come back rejected rather than resolved. This is a situation where one might want to use `Promise.all` to wait for all of these Promises to resolve, like so:
+- An async function will always return a Promise, so it will not return the array `[elie, matt, joel]` as a regular function would, but will instead return a Promise. To use the resolved data in this array, one would either need to chain a `.then` onto `getUsers()` or to call `getUsers` within another async function and await it. Also, this code assumes that `elie`, `joel`, and `matt` will all be retrieved without issue, when in fact one or all of these Promises could come back rejected rather than resolved. This is a situation where one might want to use `Promise.all` to wait for all of these Promises to resolve, along the lines of:
 
 ```js
 async function getUsers(userArr) {
@@ -60,4 +60,4 @@ async function getUsers(userArr) {
 }
 ```
 
-This refactoring further optimizes the function by allowing any array of users to be passed in as an argument rather than hardcoding three particular users, making the function more broadly useful.
+- This refactoring further optimizes the function by allowing any array of users to be passed in as an argument rather than hardcoding three particular users, making the function more broadly useful.
